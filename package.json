@@ -1,0 +1,19 @@
+{
+  "name": "guardabosques-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "NODE_ENV=test mocha test.js",
+    "start": "node bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/nel_12633/guardabosques-api.git"
+  },
+  "author": "Nadim El Taha <nadimeltaha@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.12.3"
+  }
+}

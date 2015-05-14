@@ -2,6 +2,9 @@
 
 var express = require('express');
 var router = express.Router();
+var resources = require('./../controllers/resources');
+
+var protocol = 'spdy31';
 
 router.param('resource_id', function(req, res, next, id) {
   req.id = id;
@@ -12,8 +15,16 @@ router.route('/:resource_id')
   .all(function(req, res, next) {
     next();
   })
-  .get(function(req, res, next) {
-    res.sendStatus(200);
+  .get(function(req, res) {
+    console.log(req.id, protocol);
+    resources.getResource(req.id, protocol, function(err, data) {
+      if(err) {
+        console.error(err);
+        res.sendStatus(500);
+      } else {
+        res.json(data);
+      }
+    });
   })
   .put(function(req, res, next) {
     next(new Error('not implemented'));

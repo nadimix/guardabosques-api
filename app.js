@@ -23,7 +23,7 @@ app.use(function(req, res, next) {
   res.header('Access-Control-Expose-Headers', 'Content-Length');
 
   // intercept OPTIONS method
-    if ('OPTIONS' == req.method) {
+    if ('OPTIONS' === req.method) {
       res.send(200);
     }
     else {
@@ -36,7 +36,7 @@ app.use('/h2', http2);
 app.use('/s31', spdy31);
 
 // error handling middleware should be loaded after the loading the routes
-if ('development' == app.get('env')) {
+if ('development' === app.get('env')) {
   app.use(errorHandler());
 }
 

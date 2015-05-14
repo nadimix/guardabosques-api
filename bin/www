@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+require('pmx').init();
 var app = require('./../app');
 var https = require('https');
 var fs = require('fs');

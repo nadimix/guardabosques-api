@@ -1,5 +1,6 @@
 'use strict';
 
+require('pmx').init();
 var express = require('express');
 var http11 = require('./routes/http11');
 var http2 = require('./routes/http2');
@@ -12,7 +13,7 @@ var errorHandler = require('errorhandler');
 var app = express();
 
 // all environments
-app.set('port', process.env.PORT || 443);
+app.set('port', process.env.PORT || 4430);
 app.use(logger('dev'));
 
 app.use(methodOverride());

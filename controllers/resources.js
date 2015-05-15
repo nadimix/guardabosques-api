@@ -29,11 +29,11 @@ function getServers(protocol) {
   // TODO fetch info from db
   switch(protocol) {
     case 'http2':
-      return ['https://ip:4441/', 'https://ip:4442/', 'https://ip:4443/'];
+      return ['https://46.101.40.237:4432/', 'https://178.62.65.116:4432/', 'https://46.101.41.32:4432/'];
     case 'spdy31':
-      return ['https://ip:4451/', 'https://ip:4452/', 'https://ip:4453/'];
+      return ['https://46.101.40.237:4433/', 'https://178.62.65.116:4433/', 'https://46.101.41.32:4433/'];
     default: // http11
-      return ['https://ip:4431/', 'https://ip:4432/', 'https://ip:4433/'];
+      return ['https://46.101.40.237:4431/', 'https://178.62.65.116:4431/', 'https://46.101.41.32:4431/'];
   }
 }
 

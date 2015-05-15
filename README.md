@@ -3,7 +3,7 @@
 [![Coverage Status](https://coveralls.io/repos/nadimix/guardabosques-api/badge.svg)](https://coveralls.io/r/nadimix/guardabosques-api)
 
 ## What is this repository for? ##
-* This is an API based on expressjs used by Guardabosques (https://github.com/nadimix/guardabosques)
+* This is an API based on expressjs used by Guardabosques (https://github.com/nadimix/guardabosques-web)
 
 ## Dependencies ##
 * [**nvm**](https://github.com/creationix/nvm)
@@ -12,9 +12,9 @@
 ## How do I get set up? ##
 * `npm install` to get the dependencies.
 
-## How to run the server? ##
-* `npm start` starts the server at port 4001.
-* `npm test` starts the server at port 4001 in debug mode.
+## How to run the api? ##
+* `sudo npm start` starts the server at port 443.
+* `npm test` runs the tests.
 
 ## Who do I talk to? ##
 * Nadim El Taha Santos => @nel_12633

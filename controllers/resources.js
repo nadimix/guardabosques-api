@@ -19,7 +19,7 @@ function getResourceJSON(id, protocol) {
   resource.chunks.forEach(function(chunk) {
     chunk.candidates = [];
     servers.forEach(function(server) {
-      chunk.candidates.push(server + chunk.chunk);
+      chunk.candidates.push(server + id + '/' + chunk.chunk);
     });
   });
   return resource;

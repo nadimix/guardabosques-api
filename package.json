@@ -4,12 +4,12 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "make test",
+    "test": "make test-coveralls",
     "start": "make start"
   },
   "repository": {
     "type": "git",
-    "url": "git://bitbucket.org/nel_12633/guardabosques-api.git"
+    "url": "git://github.com/nadimix/guardabosques-api.git"
   },
   "author": "Nadim El Taha <nadimeltaha@gmail.com>",
   "license": "MIT",
@@ -21,9 +21,12 @@
     "pmx": "^0.3.11"
   },
   "devDependencies": {
+    "coveralls": "^2.11.2",
     "istanbul": "^0.3.14",
+    "jscoverage": "^0.5.9",
     "jshint": "^2.7.0",
     "mocha": "^2.2.4",
+    "mocha-lcov-reporter": "0.0.2",
     "supertest": "^1.0.0"
   }
 }

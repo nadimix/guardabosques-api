@@ -1,7 +1,8 @@
 # Guardabosque's API
+[![Build Status](https://travis-ci.org/nadimix/guardabosques-api.svg?branch=master)](https://travis-ci.org/nadimix/guardabosques-api)
 
 ## What is this repository for? ##
-* This is an API based on expressjs used by Guardabosques (https://bitbucket.org/nel_12633/guardabosques)
+* This is an API based on expressjs used by Guardabosques (https://github.com/nadimix/guardabosques)
 
 ## Dependencies ##
 * [**nvm**](https://github.com/creationix/nvm)

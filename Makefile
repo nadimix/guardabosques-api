@@ -4,7 +4,7 @@ lint:
 	./node_modules/.bin/jshint ./app.js ./test.js ./controllers ./routes
 
 start:
-	@NODE_ENV=development sudo node ./bin/www
+	@NODE_ENV=development node ./bin/www
 
 test:
 	$(MAKE) lint

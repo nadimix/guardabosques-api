@@ -10,30 +10,65 @@ exports.getResource = function(id, protocol, callback) {
 function getResourceJSON(id, protocol) {
   var servers = getServers(protocol);
   var resource = getResource(id);
+  var numServers = servers.length;
 
-  if(servers.length === 0 || resource === null) {
-  	console.error('Servers.length', servers.length, 'resource', resource);
+  if(numServers === 0 || resource === null) {
+    console.error('Servers.length', numServers, 'resource', resource);
     return null;
   }
 
   resource.chunks.forEach(function(chunk) {
     chunk.candidates = [];
-    servers.forEach(function(server) {
+    var sequence = getRandomSequence(numServers);
+    console.log(sequence);
+    for(var i = 0; i < numServers; i++) {
+      var server = servers[sequence[i]];
       chunk.candidates.push(server + id + '/' + chunk.chunk);
-    });
+    }
   });
   return resource;
 }
 
+function getRandomSequence(numServers) {
+  var sequence = [];
+  while(sequence.length < numServers) {
+    var randomIndex = Math.floor(Math.random() * numServers);
+    if (!checkDuplicates(sequence, randomIndex)) {
+      sequence.push(randomIndex);
+    }
+  }
+  return sequence;
+}
+
+function checkDuplicates(sequence, randomIndex) {
+  for (var i = 0; i < sequence.length; i++) {
+    if(sequence[i] === randomIndex) {
+      return true;
+    }
+  }
+  return false;
+}
+
 function getServers(protocol) {
   // TODO fetch info from db
+  var servers = ['46.101.40.237', '178.62.65.116', '46.101.41.32'];
+  var candidates = [];
   switch(protocol) {
     case 'http2':
-      return ['https://46.101.40.237:4432/', 'https://178.62.65.116:4432/', 'https://46.101.41.32:4432/'];
+      servers.forEach(function(server) {
+        candidates.push('https://' + server + ':4432/');
+      });
+      return candidates;
     case 'spdy31':
-      return ['https://46.101.40.237:4433/', 'https://178.62.65.116:4433/', 'https://46.101.41.32:4433/'];
+      servers.forEach(function(server) {
+        candidates.push('https://' + server + ':4433/');
+      });
+      return candidates;
     default: // http11
-      return ['https://46.101.40.237:4431/', 'https://178.62.65.116:4431/', 'https://46.101.41.32:4431/'];
+      servers.forEach(function(server) {
+        candidates.push('https://' + server + ':4431/');
+      });
+      return candidates;
   }
 }
 

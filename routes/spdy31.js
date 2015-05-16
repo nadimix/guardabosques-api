@@ -16,7 +16,6 @@ router.route('/:resource_id')
     next();
   })
   .get(function(req, res) {
-    console.log(req.id, protocol);
     resources.getResource(req.id, protocol, function(err, data) {
       if(err) {
         console.error(err);

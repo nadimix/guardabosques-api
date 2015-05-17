@@ -19,7 +19,11 @@ router.route('/:resource_id')
     resources.getResource(req.id, protocol, function(err, data) {
       if(err) {
         console.error(err);
-        res.sendStatus(500);
+        if(err === 404) {
+          res.sendStatus(404);
+        } else {
+          res.sendStatus(500);
+        }
       } else {
         res.json(data);
       }

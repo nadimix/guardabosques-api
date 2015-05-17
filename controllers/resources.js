@@ -1,10 +1,15 @@
 'use strict';
+var resourceModel = require('./../models/resources');
 
 exports.getResource = function(id, protocol, callback) {
     if(id === null) {
-      callback("Id shouldn't be null", null);
+      callback(404, null);
     }
-    callback(null, getResourceJSON(id, protocol));
+    var json = getResourceJSON(id, protocol);
+    if(json === null) {
+      callback(404, null);
+    }
+    callback(null, json);
 };
 
 function getResourceJSON(id, protocol) {
@@ -72,52 +77,12 @@ function getServers(protocol) {
   }
 }
 
-function getResource() {
-  // TODO fetch resource from db (getResource(id))
-  return {
-    id: '0db391f587a4610373fbb714c05d2456',
-    name: 'debian-7.8.0-amd64-i386-netinst.iso',
-    chunks: [
-      {
-        id: 0,
-        chunk: 'debian-7.8.0-amd64-i386-netinst.iso.aa'
-      }, 
-      {
-        id: 1,
-        chunk: 'debian-7.8.0-amd64-i386-netinst.iso.ab'
-      },
-      {
-        id: 2,
-        chunk: 'debian-7.8.0-amd64-i386-netinst.iso.ac'
-      },
-      {
-        id: 3,
-        chunk: 'debian-7.8.0-amd64-i386-netinst.iso.ad'
-      },
-      {
-        id: 4,
-        chunk: 'debian-7.8.0-amd64-i386-netinst.iso.ae'
-      },
-      {
-        id: 5,
-        chunk: 'debian-7.8.0-amd64-i386-netinst.iso.af'
-      },
-      {
-        id: 6,
-        chunk: 'debian-7.8.0-amd64-i386-netinst.iso.ag'
-      },
-      {
-        id: 7,
-        chunk: 'debian-7.8.0-amd64-i386-netinst.iso.ah'
-      },
-      {
-        id: 8,
-        chunk: 'debian-7.8.0-amd64-i386-netinst.iso.ai'
-      },
-      {
-        id: 9,
-        chunk: 'debian-7.8.0-amd64-i386-netinst.iso.aj'
-      }
-    ]
-  };
+function getResource(id) {
+  var resources = resourceModel.getResources;
+  for (var i = 0; i < resources.length; i++) {
+    if(resources[i].id === id) {
+      return resources[i];
+    }
+  }
+  return null;
 }

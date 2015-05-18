@@ -2,6 +2,7 @@
 
 require('pmx').init();
 var express = require('express');
+var resources = require('./routes/resources');
 var http11 = require('./routes/http11');
 var http2 = require('./routes/http2');
 var spdy31 = require('./routes/spdy31');
@@ -32,9 +33,10 @@ app.use(function(req, res, next) {
     }
 });
 
-app.use('/h11', http11);
-app.use('/h2', http2);
-app.use('/s31', spdy31);
+app.use('/resources', resources);
+app.use('/resource/h11', http11);
+app.use('/resource/h2', http2);
+app.use('/resource/s31', spdy31);
 
 // error handling middleware should be loaded after the loading the routes
 if ('development' === app.get('env')) {

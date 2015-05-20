@@ -1,6 +1,14 @@
 'use strict';
 var resourceModel = require('./../models/resources');
 
+exports.getManifest = function(callback) {
+  var json = resourceModel.getManifest;
+  if(json === null) {
+      callback(404, null);
+    }
+    callback(null, json);
+};
+
 exports.getResource = function(id, protocol, callback) {
     if(id === null) {
       callback(404, null);

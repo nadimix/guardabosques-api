@@ -1,5 +1,19 @@
 'use strict';
 
+// TODO fetch data from db
+exports.getManifest = [
+  {
+    id: '0db391f587a4610373fbb714c05d2456',
+    name: 'debian-7.8.0-amd64-i386-netinst.iso',
+    protocols: ['h11', 's31', 'h2']
+  },
+  {
+    id: 'd7ac45a667a6577519f9c9025c5568e8',
+    name: 'ubuntu-14.04.2-desktop-amd64+mac.iso',
+    protocols: ['h11', 's31', 'h2']
+  }
+];
+
 // TODO fetch resources from db
 exports.getResources = [
   {

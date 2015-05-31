@@ -11,6 +11,11 @@ exports.getManifest = [
     id: 'd7ac45a667a6577519f9c9025c5568e8',
     name: 'ubuntu-14.04.2-desktop-amd64+mac.iso',
     protocols: ['h11', 's31', 'h2']
+  },
+  {
+    id: '742cc5b2c21bb1872954b13b7b2091a3',
+    name: 'elementaryos-freya-amd64.20150411.iso',
+    protocols: ['h11', 's31', 'h2']
   }
 ];
 

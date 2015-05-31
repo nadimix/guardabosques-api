@@ -94,3 +94,28 @@ function getResource(id) {
   }
   return null;
 }
+
+function insertResource(id, name, numElements) {
+  if(numElements > 1000) {
+    return null;
+  }
+
+  var resource = {};
+  resource.id = id;
+  resource.name = name;
+  resource.chunks = [];
+  var chunk;
+  for(var i = 0; i < numElements; i++) {
+    chunk = {};
+    chunk.id = i;
+    chunk.chunk = name + '.' + getSequenceSize3(i);
+    resource.chunks.push(chunk);
+  }
+  return resource;
+}
+
+function getSequenceSize3(num) {
+    var size = 3;
+    var sequence = "000" + num;
+    return sequence.substr(sequence.length-size);
+}

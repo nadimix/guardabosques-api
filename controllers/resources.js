@@ -10,14 +10,33 @@ exports.getManifest = function(callback) {
 };
 
 exports.getResource = function(id, protocol, callback) {
-    if(id === null) {
-      callback(404, null);
-    }
-    var json = getResourceJSON(id, protocol);
-    if(json === null) {
-      callback(404, null);
-    }
-    callback(null, json);
+  if(id === null) {
+    callback(404, null);
+  }
+  var json = getResourceJSON(id, protocol);
+  if(json === null) {
+    callback(404, null);
+  }
+  callback(null, json);
+};
+
+exports.insertResource = function(id, name, numElements) {
+  if(numElements > 1000) {
+    return null;
+  }
+
+  var resource = {};
+  resource.id = id;
+  resource.name = name;
+  resource.chunks = [];
+  var chunk;
+  for(var i = 0; i < numElements; i++) {
+    chunk = {};
+    chunk.id = i;
+    chunk.chunk = name + '.' + this._getSequenceSize3(i);
+    resource.chunks.push(chunk);
+  }
+  return resource;
 };
 
 function getResourceJSON(id, protocol) {
@@ -33,7 +52,6 @@ function getResourceJSON(id, protocol) {
   resource.chunks.forEach(function(chunk) {
     chunk.candidates = [];
     var sequence = getRandomSequence(numServers);
-    console.log(sequence);
     for(var i = 0; i < numServers; i++) {
       var server = servers[sequence[i]];
       chunk.candidates.push(server + id + '/' + chunk.chunk);
@@ -95,27 +113,17 @@ function getResource(id) {
   return null;
 }
 
-function insertResource(id, name, numElements) {
-  if(numElements > 1000) {
-    return null;
-  }
-
-  var resource = {};
-  resource.id = id;
-  resource.name = name;
-  resource.chunks = [];
-  var chunk;
-  for(var i = 0; i < numElements; i++) {
-    chunk = {};
-    chunk.id = i;
-    chunk.chunk = name + '.' + getSequenceSize3(i);
-    resource.chunks.push(chunk);
-  }
-  return resource;
-}
-
 function getSequenceSize3(num) {
+    if(num > 999) {
+      return null;
+    }
     var size = 3;
     var sequence = "000" + num;
     return sequence.substr(sequence.length-size);
+}
+
+// Exports private functions when run unit tests
+if(process.env.NODE_ENV === 'test') {
+  exports._getRandomSequence = getRandomSequence;
+  exports._getSequenceSize3 = getSequenceSize3;
 }

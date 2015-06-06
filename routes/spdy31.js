@@ -2,7 +2,7 @@
 
 var express = require('express');
 var router = express.Router();
-var resources = require('./../controllers/resources');
+var resourcesCtrl = require('./../controllers/resources');
 
 var protocol = 'spdy31';
 
@@ -16,7 +16,7 @@ router.route('/:resource_id')
     next();
   })
   .get(function(req, res) {
-    resources.getResource(req.id, protocol, function(err, data) {
+    resourcesCtrl.getResource(req.id, protocol, function(err, data) {
       if(err) {
         console.error(err);
         if(err === 404) {

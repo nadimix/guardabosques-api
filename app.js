@@ -25,12 +25,12 @@ app.use(function(req, res, next) {
   res.header('Access-Control-Expose-Headers', 'Content-Length');
 
   // intercept OPTIONS method
-    if ('OPTIONS' === req.method) {
-      res.send(200);
-    }
-    else {
-      next();
-    }
+  if ('OPTIONS' === req.method) {
+    res.send(200);
+  }
+  else {
+    next();
+  }
 });
 
 app.use('/resources', resources);

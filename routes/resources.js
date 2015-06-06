@@ -2,14 +2,14 @@
 
 var express = require('express');
 var router = express.Router();
-var resources = require('./../controllers/resources');
+var resourcesCtrl = require('./../controllers/resources');
 
 router.route('/')
   .all(function(req, res, next) {
     next();
   })
   .get(function(req, res) {
-    resources.getManifest(function(err, data) {
+    resourcesCtrl.getManifest(function(err, data) {
       if(err) {
         console.error(err);
         if(err === 404) {

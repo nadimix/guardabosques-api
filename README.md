@@ -1,6 +1,8 @@
 # Guardabosque's API
-[![Build Status](https://travis-ci.org/nadimix/guardabosques-api.svg?branch=master)](https://travis-ci.org/nadimix/guardabosques-api)
+[![Travis-ci Status](https://travis-ci.org/nadimix/guardabosques-api.svg?branch=master)](https://travis-ci.org/nadimix/guardabosques-api)
 [![Coverage Status](https://coveralls.io/repos/nadimix/guardabosques-api/badge.svg)](https://coveralls.io/r/nadimix/guardabosques-api)
+
+[![Codeship Status](https://codeship.com/projects/84239/status?branch=master)](https://codeship.com/projects/84239)
 
 ## What is this repository for? ##
 * This is an API based on expressjs used by Guardabosques (https://github.com/nadimix/guardabosques-web)

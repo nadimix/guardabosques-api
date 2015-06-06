@@ -47,3 +47,17 @@ describe('Tests getRandomSequence', function() {
   });
 
 });
+
+describe('Tests insertResource', function() {
+
+  it('Should return null due to numElements > 1000', function() {
+    assert.equal(resourcesCtrl.insertResource('123456', 'test_resource', 1001), null);
+  });
+
+  it('Should return a JSON with the n chunks', function() {
+    var numElements = 34;
+    var json = resourcesCtrl.insertResource('123456', 'test_resource', numElements);
+    assert.equal(json.chunks.length, numElements);
+  });
+
+});

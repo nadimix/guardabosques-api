@@ -4,9 +4,10 @@ var resourceModel = require('./../models/resources');
 exports.getManifest = function(callback) {
   var json = resourceModel.getManifest;
   if(json === null) {
-      callback(404, null);
-    }
+    callback(404, null);
+  } else {
     callback(null, json);
+  }
 };
 
 exports.getResource = function(id, protocol, callback) {
@@ -16,8 +17,9 @@ exports.getResource = function(id, protocol, callback) {
   var json = getResourceJSON(id, protocol);
   if(json === null) {
     callback(404, null);
+  } else {
+    callback(null, json);
   }
-  callback(null, json);
 };
 
 exports.insertResource = function(id, name, numElements) {

@@ -2,9 +2,7 @@
 [![Travis-ci Status](https://travis-ci.org/nadimix/guardabosques-api.svg?branch=master)](https://travis-ci.org/nadimix/guardabosques-api)
 [![Code Climate](https://codeclimate.com/github/nadimix/guardabosques-api/badges/gpa.svg)](https://codeclimate.com/github/nadimix/guardabosques-api)
 [![Test Coverage](https://codeclimate.com/github/nadimix/guardabosques-api/badges/coverage.svg)](https://codeclimate.com/github/nadimix/guardabosques-api/coverage)
-[![Coverage Status](https://coveralls.io/repos/nadimix/guardabosques-api/badge.svg)](https://coveralls.io/r/nadimix/guardabosques-api)
 
-[ ![Codeship Status for nadimix/guardabosques-api](https://codeship.com/projects/8afff490-ee91-0132-4781-4259ee048b3d/status?branch=master)](https://codeship.com/projects/84239)
 ## What is this repository for? ##
 * This is an API based on expressjs used by Guardabosques (https://github.com/nadimix/guardabosques-web)
 

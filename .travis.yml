@@ -3,3 +3,8 @@ node_js:
   - "iojs-v2.0.1"
   - "iojs"
   - "node"
+addons:
+  code_climate:
+    repo_token: 3b982144cafda20abf9c9bf44e8700152706e56b834424e6cff70abdb65ac822
+after_script:
+  - codeclimate < lcov.info

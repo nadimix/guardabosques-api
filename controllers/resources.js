@@ -1,20 +1,18 @@
 'use strict';
 var resourceModel = require('./../models/resources');
 
-exports.getManifest = function(callback) {
-  var json = resourceModel.getManifest;
-  if(json === null) {
-    callback(404, null);
-  } else {
-    callback(null, json);
-  }
+exports.get = function(req, res) {
+  getResourceJSON(req.id, req.httpProtocol, function(err, data) {
+    res.status(err ? 404 : 200).json({
+      error: err ? true : null,
+      errorMessage: err ? err : null,
+      data: data
+    });
+  });
 };
 
-exports.getResource = function(id, protocol, callback) {
-  if(id === null) {
-    callback(404, null);
-  }
-  var json = getResourceJSON(id, protocol);
+exports.getManifest = function(callback) {
+  var json = resourceModel.getManifest;
   if(json === null) {
     callback(404, null);
   } else {
@@ -41,14 +39,21 @@ exports.insertResource = function(id, name, numElements) {
   return resource;
 };
 
-function getResourceJSON(id, protocol) {
+function getResourceJSON(id, protocol, callback) {
+  checkProtocol(protocol, function(err) {
+    if(err) {
+      callback(err, null);
+    }
+  });
+
   var servers = getServers(protocol);
   var resource = getResource(id);
   var numServers = servers.length;
 
-  if(numServers === 0 || resource === null) {
-    console.error('Servers.length', numServers, 'resource', resource);
-    return null;
+  if(numServers === 0) {
+    callback('Servers not found', null);
+  } else if (resource === null) {
+    callback('Resource Not found', null);
   }
 
   resource.chunks.forEach(function(chunk) {
@@ -59,7 +64,16 @@ function getResourceJSON(id, protocol) {
       chunk.candidates.push(server + id + '/' + chunk.chunk);
     }
   });
-  return resource;
+
+  callback(null, resource);
+}
+
+function checkProtocol(protocol, callback) {
+  if(protocol !== 'h11' && protocol !== 'h2' && protocol !== 's31') {
+    callback('Bad protocol');
+  } else {
+    callback(null);
+  }
 }
 
 function getRandomSequence(numServers) {

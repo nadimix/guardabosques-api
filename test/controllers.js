@@ -8,7 +8,7 @@ describe('Tests getSequenceSize3', function() {
   it('Returns 000', function() {
     assert.equal(resourcesCtrl._getSequenceSize3(0), '000');
   });
-  
+
   it('Returns 001', function() {
     assert.equal(resourcesCtrl._getSequenceSize3(1), '001');
   });

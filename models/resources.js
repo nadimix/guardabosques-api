@@ -1,7 +1,7 @@
 'use strict';
 
 // TODO fetch data from db
-exports.getManifest = [
+exports.getResources = [
   {
     id: '0db391f587a4610373fbb714c05d2456',
     name: 'debian-7.8.0-amd64-i386-netinst.iso',
@@ -20,7 +20,7 @@ exports.getManifest = [
 ];
 
 // TODO fetch resources from db
-exports.getResources = [
+exports.getResource = [
   {
     id: '0db391f587a4610373fbb714c05d2456',
     name: 'debian-7.8.0-amd64-i386-netinst.iso',
@@ -28,7 +28,7 @@ exports.getResources = [
       {
         id: 0,
         chunk: 'debian-7.8.0-amd64-i386-netinst.iso.aa'
-      }, 
+      },
       {
         id: 1,
         chunk: 'debian-7.8.0-amd64-i386-netinst.iso.ab'
@@ -74,7 +74,7 @@ exports.getResources = [
       {
         id: 0,
         chunk: 'ubuntu-14.04.2-desktop-amd64+mac.iso.aa'
-      }, 
+      },
       {
         id: 1,
         chunk: 'ubuntu-14.04.2-desktop-amd64+mac.iso.ab'
@@ -968,6 +968,6 @@ exports.getResources = [
      { id: 849, chunk: 'elementaryos-freya-amd64.20150411.iso.849' },
      { id: 850, chunk: 'elementaryos-freya-amd64.20150411.iso.850' },
      { id: 851, chunk: 'elementaryos-freya-amd64.20150411.iso.851' }
-    ] 
+    ]
   }
 ];

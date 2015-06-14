@@ -1,7 +1,7 @@
 'use strict';
 var resourceModel = require('./../models/resources');
 
-exports.get = function(req, res) {
+exports.getResource = function(req, res) {
   getResourceJSON(req.id, req.httpProtocol, function(err, data) {
     res.status(err ? 404 : 200).json({
       error: err ? true : null,
@@ -11,13 +11,14 @@ exports.get = function(req, res) {
   });
 };
 
-exports.getManifest = function(callback) {
-  var json = resourceModel.getManifest;
-  if(json === null) {
-    callback(404, null);
-  } else {
-    callback(null, json);
-  }
+exports.getResources = function(req, res) {
+  getResourcesJSON(function(err, data) {
+    res.status(err ? 404 : 200).json({
+      error: err ? true : null,
+      errorMessage: err ? err : null,
+      data: data
+    });
+  });
 };
 
 exports.insertResource = function(id, name, numElements) {
@@ -39,6 +40,15 @@ exports.insertResource = function(id, name, numElements) {
   return resource;
 };
 
+function getResourcesJSON(callback) {
+  var json = resourceModel.getResources;
+  if(json) {
+    callback(null, json);
+  } else {
+    callback('Resources not found', null);
+  }
+}
+
 function getResourceJSON(id, protocol, callback) {
   checkProtocol(protocol, function(err) {
     if(err) {
@@ -52,7 +62,7 @@ function getResourceJSON(id, protocol, callback) {
 
   if(numServers === 0) {
     callback('Servers not found', null);
-  } else if (resource === null) {
+  } else if (!resource) {
     callback('Resource Not found', null);
   }
 
@@ -120,7 +130,7 @@ function getServers(protocol) {
 }
 
 function getResource(id) {
-  var resources = resourceModel.getResources;
+  var resources = resourceModel.getResource;
   for (var i = 0; i < resources.length; i++) {
     if(resources[i].id === id) {
       return resources[i];

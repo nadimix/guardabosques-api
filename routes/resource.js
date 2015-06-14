@@ -15,6 +15,6 @@ router.param('protocol', function(req, res, next, protocol) {
   next();
 });
 
-router.get('/:resourceId/:protocol', resourcesCtrl.get);
+router.get('/:resourceId/:protocol', resourcesCtrl.getResource);
 
 module.exports = router;

@@ -3,21 +3,13 @@ var resourceModel = require('./../models/resources');
 
 exports.getResource = function(req, res) {
   getResourceJSON(req.id, req.httpProtocol, function(err, data) {
-    res.status(err ? 404 : 200).json({
-      error: err ? true : null,
-      errorMessage: err ? err : null,
-      data: data
-    });
+    res.status(err ? 404 : 200).json(err ? null : data);
   });
 };
 
 exports.getResources = function(req, res) {
   getResourcesJSON(function(err, data) {
-    res.status(err ? 404 : 200).json({
-      error: err ? true : null,
-      errorMessage: err ? err : null,
-      data: data
-    });
+    res.status(err ? 404 : 200).json(err ? null : data);
   });
 };
 
@@ -52,7 +44,7 @@ function getResourcesJSON(callback) {
 function getResourceJSON(id, protocol, callback) {
   checkProtocol(protocol, function(err) {
     if(err) {
-      callback(err, null);
+      return callback(err, null);
     }
   });
 
@@ -61,9 +53,9 @@ function getResourceJSON(id, protocol, callback) {
   var numServers = servers.length;
 
   if(numServers === 0) {
-    callback('Servers not found', null);
+    return callback('Servers not found', null);
   } else if (!resource) {
-    callback('Resource Not found', null);
+    return callback('Resource Not found', null);
   }
 
   resource.chunks.forEach(function(chunk) {

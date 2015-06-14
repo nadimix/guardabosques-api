@@ -38,3 +38,13 @@ describe('Requests to /resource/:res_id/:protocol', function() {
   });
 
 });
+
+describe('Tests request of OPTIONS method', function() {
+
+  it('Responds with 200 OK', function(done) {
+    request(app)
+    .options('/')
+    .expect(200, done);
+  });
+
+});

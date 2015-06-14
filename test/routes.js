@@ -37,6 +37,18 @@ describe('Requests to /resource/:res_id/:protocol', function() {
     .expect(200, done);
   });
 
+  it('Bad resource id responds with 404 error', function(done) {
+    request(app)
+    .get('/resource/0db391f587a4610373fbb714c05d245f6/h11')
+    .expect(404, done);
+  });
+
+  it('Bad protocol responds with 404 error', function(done) {
+    request(app)
+    .get('/resource/0db391f587a4610373fbb714c05d2456/h3')
+    .expect(404, done);
+  });
+
 });
 
 describe('Tests request of OPTIONS method', function() {

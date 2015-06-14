@@ -111,12 +111,12 @@ function getServers(protocol) {
   var servers = ['46.101.40.237', '178.62.65.116', '46.101.41.32'];
   var candidates = [];
   switch(protocol) {
-    case 'http2':
+    case 'h2':
       servers.forEach(function(server) {
         candidates.push('https://' + server + ':4432/');
       });
       return candidates;
-    case 'spdy31':
+    case 's31':
       servers.forEach(function(server) {
         candidates.push('https://' + server + ':4433/');
       });

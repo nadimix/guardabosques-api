@@ -16,6 +16,11 @@ exports.getResources = [
     id: '742cc5b2c21bb1872954b13b7b2091a3',
     name: 'elementaryos-freya-amd64.20150411.iso',
     protocols: ['h11', 's31', 'h2']
+  },
+  {
+    id: '742cc5b2c21bb1872954b13b7b2091a3_100M',
+    name: 'elementaryos-freya-amd64.20150411_100Mb.iso',
+    protocols: ['h11', 's31', 'h2']
   }
 ];
 
@@ -968,6 +973,22 @@ exports.getResource = [
      { id: 849, chunk: 'elementaryos-freya-amd64.20150411.iso.849' },
      { id: 850, chunk: 'elementaryos-freya-amd64.20150411.iso.850' },
      { id: 851, chunk: 'elementaryos-freya-amd64.20150411.iso.851' }
+    ]
+  },
+  {
+    id: '742cc5b2c21bb1872954b13b7b2091a3_100M',
+    name: 'elementaryos-freya-amd64.20150411_100Mb.iso',
+    chunks:
+    [
+      { id: 0, chunk: 'elementaryos-freya-amd64.20150411_100Mb.iso.000' },
+      { id: 1, chunk: 'elementaryos-freya-amd64.20150411_100Mb.iso.001' },
+      { id: 2, chunk: 'elementaryos-freya-amd64.20150411_100Mb.iso.002' },
+      { id: 3, chunk: 'elementaryos-freya-amd64.20150411_100Mb.iso.003' },
+      { id: 4, chunk: 'elementaryos-freya-amd64.20150411_100Mb.iso.004' },
+      { id: 5, chunk: 'elementaryos-freya-amd64.20150411_100Mb.iso.005' },
+      { id: 6, chunk: 'elementaryos-freya-amd64.20150411_100Mb.iso.006' },
+      { id: 7, chunk: 'elementaryos-freya-amd64.20150411_100Mb.iso.007' },
+      { id: 8, chunk: 'elementaryos-freya-amd64.20150411_100Mb.iso.008' }
     ]
   }
 ];

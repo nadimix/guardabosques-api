@@ -1,8 +1,9 @@
 language: node_js
 node_js:
-  - "iojs-v2.0.1"
+  - "iojs-v3.2.0"
   - "iojs"
   - "node"
+  - "node-v4.0.0"
 addons:
   code_climate:
     repo_token: 3b982144cafda20abf9c9bf44e8700152706e56b834424e6cff70abdb65ac822
